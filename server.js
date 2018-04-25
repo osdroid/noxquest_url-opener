@@ -13,9 +13,9 @@ const server = http.createServer((request, response) => {
     } else {
 	response.setHeader('Content-Type', 'text/html');
 	var solicitud = null;
-	if (url.startsWith("/abrir/?")) {
-	    const reqUrl = url.substring(8);
-	    solicitud = reqUrl;
+	if (url.startsWith("/url/?")) {
+	    const reqUrl = url.substring(6);
+	    solicitud = decodeURIComponent(reqUrl);
 	    if (!reqUrl.startsWith("http"))
 		solicitud = "http://" + solicitud;
 	} else if (url.startsWith("/google/?")) {
@@ -29,7 +29,10 @@ const server = http.createServer((request, response) => {
 	    console.log((new Date()) + " > " + solicitud);
 	    wsClients.forEach(e => e.sendUTF(JSON.stringify({url: solicitud})));
 	}
-	response.end('OK\n');
+	if (wsClients.length === 0)
+	    response.end('No devices listening\n');
+	else
+	    response.end('OK ' + solicitud + '\n');
     }
 });
 const wsServer = new WebSocketServer({ httpServer: server });
