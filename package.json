@@ -1,0 +1,16 @@
+{
+  "name": "noxquest-url-opener",
+  "version": "1.0.0",
+  "description": "Small utility to open webpages on mobile devices directly from console",
+  "main": "server.js",
+  "dependencies": {
+    "websocket": "^1.0.25"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "osdroid",
+  "license": "ISC"
+}
