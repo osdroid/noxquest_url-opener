@@ -35,6 +35,12 @@ const server = http.createServer((request, response) => {
 	    response.end('OK ' + solicitud + '\n');
     }
 });
+server.on("error", error => {
+    if (error.code === "EADDRINUSE")
+	console.log("ERROR: Port already in use");
+    else
+	console.log(error);
+});
 const wsServer = new WebSocketServer({ httpServer: server });
 var wsClients = [];
 wsServer.on('request', request => {
@@ -47,5 +53,6 @@ wsServer.on('request', request => {
 	console.log((new Date()) + " Disconnected [" + clientIp + "]");
     });
 });
-console.log("Listening on port 20,000");
 server.listen(20000);
+console.log("Listening on port 20,000");
+
