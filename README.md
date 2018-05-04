@@ -20,8 +20,8 @@
 ### How do I get set up? ###
 
 * Install node
-* `git clone https://bitbucket.org/ocampos/noxquest-url-opener.git`
-* `cd noxquest-url-opener`
+* `git clone https://bitbucket.org/ocampos/noxquest_url-opener.git`
+* `cd noxquest_url-opener`
 > The next step is my approach to register some aliases, and add it to .bashrc (I would advise reviewing it)
 * `source register-alias.sh`
 * `nohup node server.js &`
